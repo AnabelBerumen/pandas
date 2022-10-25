@@ -26,3 +26,40 @@
 ## Assigning data
 - df['column_name'] = 'something'
 - df['column_name']= range(len(df), 0, -1)
+
+## Types
+- df.dtype
+- df.column.dtype
+- df.column.astype('float64')
+- df.index.dtype
+
+## Missing data
+- df[pd.isnull(df.column)]
+- df[df.column.isnull()]
+- pd.isnull(df.column)
+- df.column.fillna('something')
+- df.column.replace("old_value", 'new_value')
+
+## Renaming
+- df.rename(columns={'old_name_column': 'new_name_column'})
+- df.rename(index={0: 'first_index', 1:'second_index'})
+- df.rename_axis('name_for_indexCol', axis='rows').rename_axis('name_for_rowCols', axis='columns')
+
+
+## Combining
+```python
+# dfs need to have the same fields(columns)
+one_df = p.read_csv('../one.csv')
+second_df = p.read_csv('../second.csv')
+pd.concat([one_df, second_df])
+```
+
+```python
+left = one_df.set_index(['column_A', 'column_B'])
+right = second_df.set_index(['column_A', 'column_B'])
+left.join, (right, lsuffix='_ONE', rsuffix='_SECOND')
+```
+
+
+
+
